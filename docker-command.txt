@@ -1,0 +1,24 @@
+docker run -d \
+--name=ethereum \
+--restart=always \
+-p 8545:8545 \
+-p 8546:8546 \
+-p 8547:8547 \
+-p 30303:30303 \
+-v /etc/localtime:/etc/localtime:ro \
+-v /storage/ethereum:/root/.ethereum \
+-v /storage/ethereum/start.sh:/start.sh \
+bc:0.0.1-desenv
+
+
+docker run -it \
+--name=ethereum \
+--rm \
+-p 8545:8545 \
+-p 8546:8546 \
+-p 8547:8547 \
+-p 30303:30303 \
+-v /etc/localtime:/etc/localtime:ro \
+-v /storage/ethereum:/root/.ethereum \
+-v /storage/ethereum/start.sh:/start.sh \
+bc:0.0.1-desenv /bin/bash

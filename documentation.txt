@@ -1,0 +1,76 @@
+# Install ethereum
+https://geth.ethereum.org/docs/install-and-build/installing-geth#download-standalone-bundle
+https://medium.facilelogin.com/build-your-own-blockchain-b8eaeea2f891
+https://arctouch.com/blog/how-to-set-up-ethereum-blockchain/
+
+chainid: 23285
+user
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install software-properties-common
+
+
+Develop Ethereum Private Blockchain in less than 30 minutes.
+You
+1. Install Go-Ethereum (geth) client.
+2. Create two EOA Accounts.
+3. Create Genesis File
+4. Seed private blockchain network with genesis block
+5. Mine new blocks
+6. Check balance to your account
+
+
+8545 TCP, used by the HTTP based JSON RPC API
+8546 TCP, used by the WebSocket based JSON RPC API
+8547 TCP, used by the GraphQL API
+30303 TCP and UDP, used by the P2P protocol running the network
+
+
+# Commands
+
+# Create a mining account
+# Mac: ~/Library/Ethereum
+# Linux: ~/.ethereum
+# Windows: %APPDATA%\Ethereum
+
+
+# Create account 
+geth account new --datadir /root/.ethereum
+
+
+# Create a genesis block
+puppeth
+clique
+
+
+Which accounts are allowed to seal? (mandatory at least one)
+> 0x64E3845EC410F709a6cD90b9b67F24f55C3192fB
+
+Which accounts should be pre-funded? (advisable at least one)
+> 0x64E3845EC410F709a6cD90b9b67F24f55C3192fB
+> 0x709e299a35c8035Fa78a3DbfcBb28ee24D81d119
+
+
+geth -datadir /root/.ethereum init /root/.ethereum/users/user.json
+
+
+geth --mine \
+--nodiscover \
+--networkid 23285 \
+--unlock 0x64E3845EC410F709a6cD90b9b67F24f55C3192fB \
+--password password.txt \
+--allow-insecure-unlock \
+--datadir /root/.ethereum/ \
+--ipcdisable \
+--http \
+--http.addr 0.0.0.0 \
+--http.api personal,eth,net,web3 \
+--ws \
+--ws.api eth,net,web3 \
+--ws.addr 0.0.0.0 \
+--graphql \
+--graphql.vhosts '*' \
+--rpc.gascap 0 \
+--rpc.txfeecap 0 \
+--verbosity 5
